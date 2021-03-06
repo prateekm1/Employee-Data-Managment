@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+
+<style>
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background-color: #4da6ff;
+}
+
+	.container {
+  margin: 50px auto;
+  width: 240px;
+  
+}
+ 
+.login {
+  position: relative;
+  margin: 0 auto;
+  padding: 50px;
+  width: 310px;
+}
+.login p.submit {
+  text-align: right;
+}
+ 
+.login-help {
+  margin: 20px 0;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px  #99e6ff;
+}
+.container {
+  margin: 50px auto;
+  width: 640px;
+  
+}
+.login:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0px 4px 14px 0px  #002933;
+}
+ 
+.login h1 {
+  margin: -20px -20px 21px;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  font-family:Monospace ;
+  color:black;
+  text-align: center;
+  background: #004d3d;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 3px 3px 0 0;
+  -webkit-box-shadow: 0 1px whitesmoke;
+  box-shadow: 0 1px #00ccff;
+  background-color: whitesmoke;
+}
+ 
+.login p {
+  margin: 20px 0 0;
+}
+ 
+.login p:first-child {
+  margin-top: 0;
+}
+ 
+.login input[type=text], .login input[type=password] {
+  width: 278px;
+  padding: 10px;
+}
+ 
+.login p.remember_me {
+  float: left;
+  line-height: 31px;
+}
+ 
+.login p.remember_me label {
+  font-size: 12px;
+  color: #777;
+  cursor: pointer;
+}
+ 
+.login p.remember_me input {
+  position: relative;
+  bottom: 1px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.container .box { 
+                width:800px; 
+                height:500px;
+                margin:50px; 
+                display:table; 
+            } 
+            .container .box .box-row { 
+                display:table-row; 
+            } 
+            .container .box .box-cell { 
+                display:table-cell; 
+                width:50%; 
+                padding:10px; 
+            } 
+            .container .box .box-cell.box1 { 
+                background:#4d4d00; 
+                color:white; 
+                text-align:justify; 
+             } 
+            .container .box .box-cell.box2 { 
+                background:#666600; 
+                text-align:justify 
+            } 
+            
+ .register-btn {
+  background-color:  #99e6ff; /* Blue */
+ 
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 0px 23px 0px -5px;;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 0px black;
+  padding: 10px;
+  width: 160px !important;
+  box-shadow: 0px 3px 6px black;
+}      
+input{
+	background-color:  #f0f5f5;
+	border:1px solid #e0ebeb;
+	font-family: Sans-serif ;
+}     
+button {
+  background-color:  #00ccff; /* Blue */
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px 2px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 0px black;
+  padding: 10px;
+  width: 131px;
+  box-shadow: 0px 3px 6px black;
+  border-radius: 4px;
+  align: center;
+ 
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: whitesmoke;
+}
+.regis{
+	display: inline-flex;
+	width: 100%;
+}
+.regis_btn{
+	display: inline-flex;
+	width: 100%;
+	margin-top: 20px;
+}
+#logout{
+margin: 0px 0px 3px 90px;
+position: relative;
+  width: 50%;
+
+}
+
+</style>
+</head>
+<body>
+<!-- login Div -->
+<div id="logindiv" class="container">
+<div class="container">
+  <div class="login">
+    <h1 class="log">Login</h1>
+    
+      <p><input type="text" name="username" id="username" value="" placeholder="Admin ID"></p>
+      <p><input type="password" name="userpass" id="userpass" value="" placeholder="Password"></p>
+     
+      <p class="submit">
+      	<button onclick = "login()">Login</button>
+      </p>
+ 
+  </div>
+  </div>
+ </div>
+  <!-- Index Page -->
+ <div id="mainpage" class="container" >
+ <div class="login">
+ <div id="logout">
+			<button onclick="logout()" class="logout-btn">Sign Out</button>
+ </div>
+	<div class="regis">
+		<div id="registerButton">
+			<button  class="register-btn" onclick="register()">Register Employee</button>
+			</div>
+			<div id="displayButton">
+			<button onclick="display()" class="register-btn">Display Data</button>
+		</div>
+	</div>
+</div>
+ </div>
+ <!-- Registration Div -->
+ 
+ <Div id = "registerUserDetails" class="container" >
+		<div class="login">
+			<h1>New Employee registration</h1>
+			
+				<p>Employee Code:<input type="text" name="newUserNameLogin" id="newUserNameLogin" placeholder="Employee Code"/ required></p>  
+				<p>Email:<input type="text" name="newUserEmail" id="newUserEmail" placeholder="Email Id"/ required></p>
+				
+				<p>Name:<input type="text" name="newUserName" id="newUserName" placeholder="Username"/ required></p>
+				<p class="text_color">Employee Status:</p>
+				<input type="radio" id="active" name="status" value="active" required>
+				<label for="active">Active</label><br>
+				<input type="radio" id="inactive" name="status" value="inactive">
+				<label for="inactive">Inactive</label><br>
+				<div class="regis_btn">
+				<button id="submitDetails" onclick = "registerUserDtls()">Submit</button>
+				<button id="updateDetails" onclick = "UpdateUserDtls()">Update</button>
+				<button id="dataDisplay" onclick = "display()">Load Data</button>
+				</div>
+			
+			</div>
+		</Div>
+		
+		<!-- Employee Data Table -->
+		<div id="dataTable" class="usrTable">
+		
+		</div>
+		
+		
+ <script>
+ 
+ var y = document.getElementById("logindiv");
+	y.style.display = "block";
+	
+	var x = document.getElementById("mainpage");
+	x.style.display = "none";
+	var z = document.getElementById("registerUserDetails");
+	z.style.display = "none";
+	var a = document.getElementById("updateDetails");
+	a.style.display = "none";
+	
+//  <!-- login function-->
+ function login(){
+		var urllog = "http://localhost:8080/EmployeeData/rest/login";
+		var usr = document.getElementById("username").value;
+		var pass = document.getElementById("userpass").value;
+		var fd = new FormData(); 
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{param1: usr, param2: pass},
+		    success: function(result){
+		    	//loginSucessDiv(result);
+		    	 if(result[0].status=='sucess'){
+		    	alert(result[0].data)
+		    		loginSucessDiv();
+		    	}else{
+		    		alert(result[0].data);
+		    	} 
+		    	
+		    }
+		})
+	}
+
+//  <!-- signup function-->
+ function register()
+ {
+	 var y = document.getElementById("registerUserDetails");
+		y.style.display = "block";
+		
+		var x = document.getElementById("mainpage");
+		x.style.display = "none";
+		 document.getElementById("newUserNameLogin").value ="";
+		 document.getElementById("newUserEmail").value="";
+		
+		 document.getElementById("newUserName").value="";
+
+ }
+ <!-- emial validation -->
+ 
+ function ValidateEmail(mail) 
+ {
+  if (/^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail))
+   {
+     return (true)
+   }
+     alert("You have entered an invalid email address!")
+     return (false)
+ }
+ function registerUserDtls(){
+		
+	 
+		var urllog = "http://localhost:8080/EmployeeData/rest/registerUser";
+		var newUserNameLogin = document.getElementById("newUserNameLogin").value;
+		var newUserEmail = document.getElementById("newUserEmail").value;
+	var checkMail=	ValidateEmail(newUserEmail) ;
+	if(checkMail==true){
+		var newUserName = document.getElementById("newUserName").value;
+		try{
+			var newUserStatus=document.querySelector('input[name="status"]:checked').value;
+			}
+			catch(err)
+			{
+				alert("Select Status");
+			}
+		if(newUserNameLogin=="" ||newUserEmail=="" ||newUserName=="")
+			{
+			alert("Enter All the details");
+			}
+		
+		else{
+		
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{empCode: newUserNameLogin, eamil: newUserEmail,status: newUserStatus, name: newUserName},
+		    success: function(result){
+		    	alert(result);
+		    	clearRegisterUserDtls();
+		    
+		    }
+		})
+		
+		}
+	}
+ }
+ <!-- Sign out function -->
+ function logout()
+ {
+	 var y = document.getElementById("logindiv");
+		y.style.display = "block";
+		
+		var x = document.getElementById("mainpage");
+		x.style.display = "none";
+		var z = document.getElementById("registerUserDetails");
+		z.style.display = "none";
+		var a = document.getElementById("updateDetails");
+		a.style.display = "none";
+		var b = document.getElementById("dataTable");
+		b.style.display = "none";
+		
+		document.getElementById("username").value="";
+		 document.getElementById("userpass").value="";
+ }
+ 
+ 
+ <!-- After login-->
+ function loginSucessDiv(){
+	 var y = document.getElementById("logindiv");
+		y.style.display = "none";
+		
+		var x = document.getElementById("mainpage");
+		x.style.display = "block";
+	 
+		
+ }
+ function clearRegisterUserDtls(){
+	 var y = document.getElementById("registerUserDetails");
+		y.style.display = "none";
+		
+		var x = document.getElementById("mainpage");
+		x.style.display = "block";
+		
+		 var z = document.getElementById("dataTable");
+			z.style.display = "block";
+ }
+ 
+  <!-- Display Data function-->
+ function display(){
+	 var urllog = "http://localhost:8080/EmployeeData/rest/data";
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{},
+		    success: function(resultinfo){
+		    	//loginSucessDiv(result);
+		    	 if(resultinfo.length>0){
+		    		 displayData(resultinfo);
+		    		 clearRegisterUserDtls();
+		    		 
+		    //	alert(resultinfo);
+		    	}else{
+		    		alert("Error occured");
+		    	} 
+		    	
+		    }
+		})
+ }
+ 
+ var tempData;
+ function displayData(result){
+		var myDispDtls ="<table><tr><th>ID</th><th>Name</th><th>Employee Code</th><th>Email</th><th>Status</th><th>Edit</th><th>Delete</th></tr><tr>";
+		
+		//Employee data
+		 tempData = result;
+		
+		for (var x = 0; x<result.length;x++) {
+			var tempId = result[x]['empCode'];
+		myDispDtls = myDispDtls +"<td>"  + result[x]['empId'] +"</td>"+"<td>"  
+		+ result[x]['name'].charAt(0).toUpperCase() + result[x]['name'].slice(1) +
+		"</td>" +"<td>" + result[x]['empCode'].toUpperCase() +"<td>" + result[x]['email'] +"</td>" +"<td>" 
+		+result[x]['status'].charAt(0).toUpperCase() + result[x]['status'].slice(1) 
+		+"</td>" +"<td>" + "<button id="+result[x]['empCode'] +"  onclick = editDtls(this.id)>"+"Edit"+"</td>" 
+		+"<td>"+"<button id="+result[x]['empCode'] +"  onclick = deleteDtls(this.id)>"+"Delete"+"</td>"+"</tr>";
+		
+		}
+		myDispDtls = myDispDtls +"</table>";
+		
+		document.getElementById("dataTable").innerHTML = myDispDtls;
+	}
+ 
+
+//  <!-- Delete Data -->
+
+ function deleteDtls(x)
+ {
+	 var txt;
+	  if (confirm("Are you sure?")) {
+	    
+	  
+	 var usrId = x;
+	 var urllog = "http://localhost:8080/EmployeeData/rest/deleteUser";
+		
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{empCode: usrId},
+		    success: function(result){
+		    	if(result==true){
+		    		alert("Data Removed");
+		    		var x = document.getElementById("mainpage");
+					x.style.display = "block";
+					var x1 = document.getElementById("dataTable");
+					x1.style.display = "none";
+		    	}
+		    
+		    }
+		})
+ }
+ }
+ 
+
+//  <!-- Edit Data -->
+ function editDtls(x)
+ {
+	 
+	 var y = document.getElementById("registerUserDetails");
+		y.style.display = "block";
+		
+		 var z = document.getElementById("dataTable");
+			z.style.display = "none";
+			var p = document.getElementById("updateDetails");
+			p.style.display = "block";
+			var q = document.getElementById("submitDetails");
+			q.style.display = "none";
+			var eid,eemail,ename,estatus;
+			for(var i=0;i<tempData.length;i++)
+				{
+				if(tempData[i]['empCode']==x){
+			 eid=	 document.getElementById("newUserNameLogin").value= tempData[i]['empCode'];
+			 eemail=	document.getElementById("newUserEmail").value= tempData[i]['email'];
+				
+			 ename=	 document.getElementById("newUserName").value= tempData[i]['name'];
+			 estatus=	document.querySelector('input[name="status"]').checked= tempData[i]['status'];
+				}
+				}
+		//	UpdateUserDtls(eid,eemail,ename,estatus);
+		
+	// alert(x);
+ }
+ 
+//  <!-- Update Details-->
+ function UpdateUserDtls()
+ {
+	 var epid = document.getElementById("newUserNameLogin").value;
+	 var epemail = document.getElementById("newUserEmail").value;
+	 var checkMail = ValidateEmail(epemail) ;
+	 if(checkMail==true){
+	 var epname = document.getElementById("newUserName").value;
+	 var ele = document.getElementsByName('status'); 
+	 var epstatus ;
+     for(i = 0; i < ele.length; i++) { 
+         if(ele[i].checked) 
+        	 epstatus= ele[i].value; 
+     } 
+	 
+	 
+	 var urllog = "http://localhost:8080/EmployeeData/rest/updateUser";
+		
+		
+		$.ajax({
+		    type: 'POST',
+		    url: urllog,
+		    data :{empCode: epid, eamil: epemail,status: epstatus, name: epname},
+		    success: function(result){
+		    	alert(result);
+		    	var x = document.getElementById("mainpage");
+				x.style.display = "block";
+				var x2 = document.getElementById("registerUserDetails");
+				x2.style.display = "none";
+				
+		    	//clearRegisterUserDtls();
+		    
+		    }
+		})
+ }
+ }
+ </script>
+</body>
+</html>
